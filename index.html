@@ -8,6 +8,14 @@
   <meta property="og:title" content="Haoyang Hong — Academic Homepage" />
   <meta property="og:description" content="RL theory · Bandits · Network Interference · Causal Inference · Robust/Adversarial RL · Online Learning" />
   <meta property="og:type" content="website" />
+  <meta property="og:image" content="https://TheoryMagic.github.io/assets/og-card.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content="Portrait of Haoyang Hong" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:image" content="https://TheoryMagic.github.io/assets/og-card.png" />
+  <!-- Fallback image -->
+  <meta property="og:image" content="https://TheoryMagic.github.io/assets/me.jpg" />
   <style>
     /* Minimal, elegant, accessible, single‑file CSS. No external deps. */
     :root {
@@ -15,7 +23,7 @@
       --panel: #111317;
       --text: #e6e7eb;
       --muted: #9aa1ac;
-      --accent: #6ea8fe; /* you can change this to your brand color */
+      --accent: #d73f09; /* OSU orange */ /* brand color */
       --card: #151821;
       --border: #2a2f3a;
       --code: #0e1116;
@@ -57,24 +65,6 @@
     .availability { font-weight: 600; letter-spacing:.3px; }
     .two-col { display:grid; grid-template-columns: 1fr; gap:16px; }
     @media (min-width: 900px) { .two-col { grid-template-columns: 1.2fr .8fr; } }
-    .card { background: var(--card); border: 1px solid var(--border); border-radius: var(--radius); box-shadow: var(--shadow); padding: 18px 20px; }
-    .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 16px; }
-    h1 { font-size: clamp(28px, 4.2vw, 38px); line-height: 1.1; margin: 0 0 6px; }
-    h2 { font-size: clamp(22px, 3.2vw, 28px); margin: 30px 0 12px; border-bottom: 1px dashed var(--border); padding-bottom: 8px; }
-    h3 { font-size: 18px; margin: 14px 0 8px; }
-    .pill { display:inline-flex; align-items:center; gap:8px; background: var(--panel); color: var(--text); border:1px solid var(--border); padding: 6px 10px; border-radius: 99px; font-size: 13px; }
-    .pills { display:flex; flex-wrap:wrap; gap:8px; }
-    .links { display:flex; flex-wrap: wrap; gap: 10px; margin-top: 10px; }
-    .btn { display:inline-block; padding: 8px 12px; border-radius: 10px; border:1px solid var(--border); background: var(--panel); }
-    .btn:hover { filter: brightness(1.05); text-decoration: none; }
-    .muted { color: var(--muted); }
-    .pub-item { padding: 14px; border-radius: 14px; border:1px solid var(--border); background: linear-gradient(180deg, rgba(255,255,255,0.02), transparent); }
-    .pub-actions a { margin-right: 10px; }
-    code, pre { font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace; background: var(--code); border:1px solid var(--border); border-radius: 10px; padding: 2px 6px; }
-    footer { margin-top: 40px; border-top: 1px solid var(--border); padding: 18px 0 30px; color: var(--muted); }
-    .availability { font-weight: 600; letter-spacing:.3px; }
-    .two-col { display:grid; grid-template-columns: 1fr; gap:16px; }
-    @media (min-width: 900px) { .two-col { grid-template-columns: 1.2fr .8fr; } }
   </style>
 </head>
 <body>
@@ -87,7 +77,6 @@
         <a href="#research">Research</a>
         <a href="#teaching">Teaching</a>
         <a href="#talks">Talks</a>
-        <a href="#open-source">Open‑source</a>
         <a href="#contact">Contact</a>
       </nav>
     </div>
@@ -121,16 +110,18 @@
       <div class="card">
         <h2>About</h2>
         <p>
-          I am a first‑year Ph.D. student in Artificial Intelligence at Oregon State University. My research focuses on the theory of
-          reinforcement learning and bandit algorithms under <em>network interference</em>, causal assumptions, and adversarial robustness.
-          I like building theory‑backed systems and reproducible experiments.
+          I'm a Ph.D. student in Artificial Intelligence at Oregon State University. I work on the theory of
+          reinforcement learning and bandit algorithms, with a focus on <em>network interference</em>, causal reasoning, and adversarial robustness.
+          I enjoy turning theory into reproducible systems and experiments.
         </p>
-        <p class="muted">Previously: University of Science and Technology of China (USTC, School of the Gifted Young).</p>
+        <p class="muted">Previously: University of Science and Technology of China (USTC), School of the Gifted Young.</p>
+      </div>
       </div>
       <div class="card">
         <h2>News</h2>
         <ul>
           <li><strong>[2025]</strong> Paper accepted to <em>NeurIPS 2025</em>: Design‑Based Bandits under Network Interference.</li>
+          <li><strong>[2025]</strong> Reading Group talk: Linear MDPs and LSVI‑UCB — Deep Dive.</li>
           <li><strong>[2026]</strong> Open to Research Internships (Summer, 12–16 weeks).</li>
         </ul>
       </div>
@@ -138,38 +129,30 @@
 
     <section id="publications">
       <h2>Publications</h2>
-      <div class="grid">
-        <article class="pub-item">
-          <h3>Design‑Based Bandits under Network Interference: A Trade‑off between Regret and Inference</h3>
-          <div class="muted"><em>NeurIPS 2025</em>. Zichen Wang*, Zhiheng Zhang*, <strong>Haoyang Hong*</strong>. <span class="muted">(*equal contribution)</span></div>
-          <div class="pub-actions" style="margin-top:6px;">
-            <a href="https://arxiv.org/pdf/2510.07646.pdf" title="PDF on arXiv">PDF</a>
-            <a href="https://arxiv.org/abs/2510.07646" title="arXiv entry">arXiv</a>
-            <a href="#" title="Code — coming soon">Code</a>
-            <a href="#" title="Slides — coming soon">Slides</a>
-          </div>
-        </article>
-        <article class="pub-item">
-          <h3>When Can You Poison Rewards? A Tight Characterization of Attackability in Linear MDPs</h3>
-          <div class="muted">Manuscript in preparation. Jose Efraim Aguilar Escamilla*, Haoyu Zhao*, <strong>Haoyang Hong*</strong>. <span class="muted">(*equal contribution)</span></div>
-          <div class="pub-actions" style="margin-top:6px;">
-            <a href="#" title="Draft link">Draft</a>
-            <a href="#" title="Slides — coming soon">Slides</a>
-            <a href="#" title="Experiments repo">Experiments</a>
-          </div>
-        </article>
-      </div>
+      <div id="pubs-list" class="grid" aria-live="polite"></div>
+      <script id="pubs-data" type="application/json">[
+        {
+          "title": "Design‑Based Bandits under Network Interference: A Trade‑off between Regret and Inference",
+          "venue": "NeurIPS 2025",
+          "authors_html": "Zichen Wang*, Zhiheng Zhang*, <strong>Haoyang Hong*</strong> <span class=\"muted\">(*equal contribution)</span>",
+          "links": [
+            {"label":"PDF","href":"https://arxiv.org/pdf/2510.07646.pdf"},
+            {"label":"arXiv","href":"https://arxiv.org/abs/2510.07646"}
+          ]
+        }
+      ]</script>
+      <noscript><p class="muted">Enable JavaScript to view publications.</p></noscript>
     </section>
 
     <section id="research">
       <h2>Research</h2>
       <div class="card">
         <p>
-          My current work studies <strong>design‑based bandits under interference</strong>, exploring the Pareto frontier between regret minimization and
-          valid statistical inference. I also investigate <strong>reward‑poisoning attackability</strong> in linear MDPs, seeking necessary and sufficient
-          conditions and practical black‑box attack frameworks.
+          I study <strong>design‑based bandits under interference</strong>, mapping the Pareto frontier between regret minimization and
+          valid statistical inference. I am also interested in <strong>reward‑poisoning attackability</strong> in linear MDPs—characterizing when
+          learning can be manipulated and developing practical black‑box evaluation protocols.
         </p>
-        <p class="muted">Keywords: regret analysis · exploration‑exploitation · causal inference under interference · robustness · reproducibility.</p>
+        <p class="muted">Keywords: regret analysis · exploration–exploitation · causal inference under interference · robustness · reproducibility.</p>
       </div>
     </section>
 
@@ -192,17 +175,6 @@
         </div>
       </div>
     </section>
-
-    <section id="open-source">
-      <h2>Open‑source & Demos</h2>
-      <div class="card">
-        <ul>
-          <li>Network bandit simulator (reproducible scripts). <span class="muted">[Link coming soon]</span></li>
-          <li>RL evaluation toolkit (PyTorch/Lightning). <span class="muted">[Link coming soon]</span></li>
-        </ul>
-      </div>
-    </section>
-
     <section id="contact">
       <h2>Contact</h2>
       <div class="card">
@@ -246,6 +218,24 @@
     }
     const adv = document.querySelector('.hero a'); if (adv && LINKS.advisor) adv.href = LINKS.advisor;
     const emailA = document.getElementById('email-link'); if (emailA && LINKS.email) emailA.textContent = LINKS.email;
+    // ===== Render publications from JSON =====
+    (function(){
+      const dataEl = document.getElementById('pubs-data');
+      const listEl = document.getElementById('pubs-list');
+      if(!dataEl || !listEl) return;
+      try {
+        const pubs = JSON.parse(dataEl.textContent.trim());
+        pubs.forEach(p => {
+          const art = document.createElement('article');
+          art.className = 'pub-item';
+          const h3 = document.createElement('h3'); h3.innerHTML = p.title;
+          const meta = document.createElement('div'); meta.className = 'muted'; meta.innerHTML = `<em>${p.venue}</em>. ${p.authors_html}`;
+          const actions = document.createElement('div'); actions.className = 'pub-actions'; actions.style.marginTop = '6px';
+          (p.links || []).forEach(L => { if(!L.href) return; const a = document.createElement('a'); a.href = L.href; a.textContent = L.label; a.title = L.label; actions.appendChild(a); });
+          art.append(h3, meta, actions); listEl.appendChild(art);
+        });
+      } catch(e) { /* silently ignore */ }
+    })();
   </script>
 </body>
 </html>
