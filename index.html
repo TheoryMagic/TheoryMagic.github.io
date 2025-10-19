@@ -55,7 +55,9 @@
     .pill { display:inline-flex; align-items:center; gap:8px; background: var(--panel); color: var(--text); border:1px solid var(--border); padding: 6px 10px; border-radius: 99px; font-size: 13px; }
     .pills { display:flex; flex-wrap:wrap; gap:8px; }
     .links { display:flex; flex-wrap: wrap; gap: 10px; margin-top: 10px; }
-    .btn { display:inline-block; padding: 8px 12px; border-radius: 10px; border:1px solid var(--border); background: var(--panel); }
+    .btn { display:inline-block; padding: 8px 12px; border-radius: 10px; border:1px solid var(--border); background: var(--panel); color: var(--text); cursor: pointer; }
+    .btn:focus { outline: 2px solid var(--accent); outline-offset: 2px; }
+    button.btn { font: inherit; }
     .btn:hover { filter: brightness(1.05); text-decoration: none; }
     .muted { color: var(--muted); }
     .pub-item { padding: 14px; border-radius: 14px; border:1px solid var(--border); background: linear-gradient(180deg, rgba(255,255,255,0.02), transparent); }
@@ -65,7 +67,61 @@
     .availability { font-weight: 600; letter-spacing:.3px; }
     .two-col { display:grid; grid-template-columns: 1fr; gap:16px; }
     @media (min-width: 900px) { .two-col { grid-template-columns: 1.2fr .8fr; } }
+  .timeline { list-style:none; padding:0; margin:4px 0 0; }
+    .timeline li { position:relative; padding:10px 0 10px 72px; border-left:2px dashed var(--border); margin-left:12px; }
+    .timeline li:last-child { border-left-color: transparent; }
+    .timeline time { position:absolute; left:-4px; top:8px; transform:translateX(-100%); font-weight:700; color:var(--muted); }
+  .sr-only { position:absolute; width:1px; height:1px; padding:0; margin:-1px; overflow:hidden; clip:rect(0 0 0 0); white-space:nowrap; border:0; }
+    details { background: var(--panel); border:1px solid var(--border); border-radius:12px; padding:8px 12px; margin-top:8px; }
+    details summary { cursor:pointer; list-style:none; }
+    details summary::-webkit-details-marker { display:none; }
+    pre { overflow:auto; }
+    .copy-btn { margin-left:8px; padding:4px 8px; font-size:12px; border-radius:8px; border:1px solid var(--border); background: var(--card); color: var(--text); cursor:pointer; }
+    .copy-btn:hover { filter: brightness(1.05); }
+    .reveal { opacity: 0; transform: translateY(12px); transition: opacity .5s ease, transform .6s ease; }
+    .reveal.in { opacity: 1; transform: none; }
+    @media (prefers-reduced-motion: reduce) {
+      .reveal { opacity: 1 !important; transform: none !important; transition: none !important; }
+    }
   </style>
+  <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32.png" />
+  <link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon-16.png" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/assets/apple-touch-icon.png" />
+  <meta name="theme-color" content="#d73f09" />
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Haoyang Hong",
+    "jobTitle": "Ph.D. Student",
+    "affiliation": {"@type":"Organization","name":"Oregon State University"},
+    "url": "https://TheoryMagic.github.io/",
+    "email": "mailto:honghao@oregonstate.edu",
+    "sameAs": [
+      "https://scholar.google.com/citations?hl=en&user=UHEqpsEAAAAJ",
+      "https://github.com/TheoryMagic",
+      "https://www.linkedin.com/in/haoyanghong1337"
+    ]
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "ScholarlyArticle",
+    "name": "Design-Based Bandits under Network Interference: A Trade-off between Regret and Inference",
+    "author": [
+      {"@type":"Person","name":"Zichen Wang"},
+      {"@type":"Person","name":"Zhiheng Zhang"},
+      {"@type":"Person","name":"Haoyang Hong"}
+    ],
+    "inLanguage": "en",
+    "isPartOf": {"@type":"Periodical","name":"NeurIPS"},
+    "identifier": "arXiv:2510.07646",
+    "url": "https://arxiv.org/abs/2510.07646",
+    "sameAs": "https://arxiv.org/abs/2510.07646",
+    "keywords": ["reinforcement learning","bandits","network interference","causal inference"]
+  }
+  </script>
 </head>
 <body>
   <header>
@@ -76,7 +132,6 @@
         <a href="#publications">Publications</a>
         <a href="#research">Research</a>
         <a href="#teaching">Teaching</a>
-        <a href="#talks">Talks</a>
         <a href="#contact">Contact</a>
       </nav>
     </div>
@@ -119,10 +174,9 @@
       </div>
       <div class="card">
         <h2>News</h2>
-        <ul>
-          <li><strong>[2025]</strong> Paper accepted to <em>NeurIPS 2025</em>: Design‑Based Bandits under Network Interference.</li>
-          <li><strong>[2025]</strong> Reading Group talk: Linear MDPs and LSVI‑UCB — Deep Dive.</li>
-          <li><strong>[2026]</strong> Open to Research Internships (Summer, 12–16 weeks).</li>
+        <ul class="timeline">
+          <li><time>2026</time> Open to <strong>Summer Research Internships</strong> (12–16 weeks).</li>
+          <li><time>2025</time> Paper accepted to <em>NeurIPS 2025</em>: Design‑Based Bandits under Network Interference.</li>
         </ul>
       </div>
     </section>
@@ -138,7 +192,8 @@
           "links": [
             {"label":"PDF","href":"https://arxiv.org/pdf/2510.07646.pdf"},
             {"label":"arXiv","href":"https://arxiv.org/abs/2510.07646"}
-          ]
+          ],
+          "bibtex": "@inproceedings{wang2025design,\n  title={Design-Based Bandits under Network Interference: A Trade-off between Regret and Inference},\n  author={Wang, Zichen and Zhang, Zhiheng and Hong, Haoyang},\n  booktitle={Advances in Neural Information Processing Systems},\n  year={2025},\n  url={https://arxiv.org/abs/2510.07646}\n}"
         }
       ]</script>
       <noscript><p class="muted">Enable JavaScript to view publications.</p></noscript>
@@ -166,13 +221,7 @@
             <li>CS 450/550 — Computer Graphics (OSU), Fall 2025</li>
           </ul>
         </div>
-        <div class="card">
-          <h3>Talks</h3>
-          <ul>
-            <li>Linear MDPs and LSVI‑UCB — Deep Dive (OSU Reading Group, 2025)</li>
-            <li>LLM‑Generated Hard Negatives for IR Fine‑Tuning (Course Final, 2025)</li>
-          </ul>
-        </div>
+        
       </div>
     </section>
     <section id="contact">
@@ -189,6 +238,7 @@
         <div>© <span id="year"></span> Haoyang Hong · Built with vanilla HTML/CSS. No cookies.</div>
       </div>
     </footer>
+      <div id="live-region" class="sr-only" aria-live="polite"></div>
   </main>
 
   <script>
@@ -225,16 +275,56 @@
       if(!dataEl || !listEl) return;
       try {
         const pubs = JSON.parse(dataEl.textContent.trim());
-        pubs.forEach(p => {
+        pubs.forEach((p, idx) => {
           const art = document.createElement('article');
-          art.className = 'pub-item';
+          art.className = 'pub-item reveal';
           const h3 = document.createElement('h3'); h3.innerHTML = p.title;
           const meta = document.createElement('div'); meta.className = 'muted'; meta.innerHTML = `<em>${p.venue}</em>. ${p.authors_html}`;
           const actions = document.createElement('div'); actions.className = 'pub-actions'; actions.style.marginTop = '6px';
           (p.links || []).forEach(L => { if(!L.href) return; const a = document.createElement('a'); a.href = L.href; a.textContent = L.label; a.title = L.label; actions.appendChild(a); });
-          art.append(h3, meta, actions); listEl.appendChild(art);
+
+          art.append(h3, meta, actions);
+
+          if (p.bibtex) {
+            const det = document.createElement('details');
+            const sum = document.createElement('summary'); sum.innerHTML = 'BibTeX';
+            const copy = document.createElement('button'); copy.type='button'; copy.className='copy-btn'; copy.textContent='Copy'; copy.setAttribute('aria-label','Copy BibTeX to clipboard');
+            sum.appendChild(copy);
+            const pre = document.createElement('pre'); const code = document.createElement('code'); code.textContent = p.bibtex; pre.appendChild(code);
+            det.append(sum, pre); art.appendChild(det);
+            copy.addEventListener('click', (e)=>{ e.stopPropagation(); navigator.clipboard.writeText(p.bibtex).then(()=>{
+              announce('BibTeX copied'); copy.textContent='Copied'; setTimeout(()=> copy.textContent='Copy', 900);
+            }); });
+          }
+          listEl.appendChild(art);
         });
-      } catch(e) { /* silently ignore */ }
+      } catch(e) { /* ignore */ }
+    })();
+
+    // ===== Reveal on scroll (respect reduced motion) =====
+    (function(){
+      const reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      const els = document.querySelectorAll('.card, .pub-item, .hero');
+      els.forEach(el => el.classList.add('reveal'));
+      if (reduce) { els.forEach(el => el.classList.add('in')); return; }
+      const io = new IntersectionObserver((entries)=>{
+        for (const en of entries) { if (en.isIntersecting) { en.target.classList.add('in'); io.unobserve(en.target); } }
+      }, { rootMargin: '0px 0px -10% 0px', threshold: 0.1 });
+      els.forEach(el => io.observe(el));
+    })();
+
+    // ===== Live region announcements =====
+    function announce(msg){ const live = document.getElementById('live-region'); if(live){ live.textContent=''; setTimeout(()=> live.textContent=msg, 10);} }
+
+    // ===== Copy email button (ensure visible text color via CSS .btn) =====
+    (function(){
+      const btn = document.getElementById('copy-email');
+      const a = document.getElementById('email-link');
+      if(!btn || !a) return;
+      btn.addEventListener('click', () => {
+        const email = a.textContent.trim();
+        navigator.clipboard.writeText(email).then(()=>{ announce('Email copied'); const prev = btn.textContent; btn.textContent='Copied'; setTimeout(()=> btn.textContent=prev, 900); });
+      });
     })();
   </script>
 </body>
