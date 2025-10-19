@@ -4,21 +4,26 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Haoyang Hong — Academic Homepage</title>
-  <meta name="description" content="Haoyang Hong — Ph.D. student in AI at Oregon State University. Research: RL theory, bandits, network interference, causal inference, robust/adversarial RL, online learning. Available Summer 2026 for internships (F-1 CPT)." />
-  <link rel="canonical" href="https://TheoryMagic.github.io/">
+
+  <!-- Meta description：突出 RL/Bandit Theory，弱化其他关键词 -->
+  <meta name="description" content="Haoyang Hong — Ph.D. student in AI at Oregon State University. Research focus: Reinforcement Learning Theory and Bandit Theory, with interests in robustness and online learning. Available Summer 2026 (F-1 CPT)." />
+  <link rel="canonical" href="https://theorymagic.github.io/">
   <meta name="color-scheme" content="dark light">
 
+  <!-- Open Graph / Twitter (单一 og:image，补充 og:url / site_name) -->
   <meta property="og:title" content="Haoyang Hong — Academic Homepage" />
-  <meta property="og:description" content="RL theory · Bandits · Network Interference · Causal Inference · Robust/Adversarial RL · Online Learning" />
+  <meta property="og:description" content="Reinforcement Learning Theory · Bandit Theory · Robustness · Online Learning" />
   <meta property="og:type" content="website" />
-  <meta property="og:image" content="https://TheoryMagic.github.io/assets/og-card.png" />
+  <meta property="og:url" content="https://theorymagic.github.io/" />
+  <meta property="og:site_name" content="Haoyang Hong" />
+  <meta property="og:image" content="https://theorymagic.github.io/assets/og-card.png" />
   <meta property="og:image:width" content="1200" />
   <meta property="og:image:height" content="630" />
-  <meta property="og:image:alt" content="Portrait of Haoyang Hong" />
+  <meta property="og:image:alt" content="Haoyang Hong — Ph.D. Student at Oregon State University" />
   <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:image" content="https://TheoryMagic.github.io/assets/og-card.png" />
-  <!-- Fallback image -->
-  <meta property="og:image" content="https://TheoryMagic.github.io/assets/me.jpg" />
+  <meta name="twitter:title" content="Haoyang Hong — Academic Homepage" />
+  <meta name="twitter:description" content="Reinforcement Learning Theory · Bandit Theory · Robustness · Online Learning" />
+  <meta name="twitter:image" content="https://theorymagic.github.io/assets/og-card.png" />
 
   <style>
     /* Minimal, elegant, accessible, single-file CSS. No external deps. */
@@ -27,7 +32,7 @@
       --panel: #111317;
       --text: #e6e7eb;
       --muted: #9aa1ac;
-      --accent: #d73f09; /* OSU orange */ /* brand color */
+      --accent: #d73f09; /* OSU orange */
       --card: #151821;
       --border: #2a2f3a;
       --code: #0e1116;
@@ -39,7 +44,8 @@
     }
     html, body { height: 100%; }
     body {
-      margin: 0; background: var(--bg); color: var(--text); font-family: ui-sans-serif, -apple-system, Segoe UI, Roboto, Helvetica, Arial, Apple Color Emoji, Segoe UI Emoji;
+      margin: 0; background: var(--bg); color: var(--text);
+      font-family: ui-sans-serif, -apple-system, Segoe UI, Roboto, Helvetica, Arial, Apple Color Emoji, Segoe UI Emoji;
       line-height: 1.6; letter-spacing: .2px; display: flex; flex-direction: column;
     }
     a { color: var(--accent); text-decoration: none; }
@@ -49,27 +55,34 @@
     header .inner { display: flex; align-items: center; justify-content: space-between; padding: 14px 0; }
     nav a { margin: 0 10px; padding: 6px 10px; border-radius: 10px; }
     nav a:hover { background: var(--panel); text-decoration: none; }
+
     .hero { padding: 48px 0 28px; display: grid; grid-template-columns: 120px 1fr; grid-gap: 20px; align-items: center; }
     .avatar { width: 120px; height: 120px; border-radius: 50%; object-fit: cover; box-shadow: var(--shadow); }
+
     .card { background: var(--card); border: 1px solid var(--border); border-radius: var(--radius); box-shadow: var(--shadow); padding: 18px 20px; }
     .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 16px; }
     h1 { font-size: clamp(28px, 4.2vw, 38px); line-height: 1.1; margin: 0 0 6px; }
     h2 { font-size: clamp(22px, 3.2vw, 28px); margin: 30px 0 12px; border-bottom: 1px dashed var(--border); padding-bottom: 8px; }
     h3 { font-size: 18px; margin: 14px 0 8px; }
+
     .pill { display:inline-flex; align-items:center; gap:8px; background: var(--panel); color: var(--text); border:1px solid var(--border); padding: 6px 10px; border-radius: 99px; font-size: 13px; }
     .pills { display:flex; flex-wrap:wrap; gap:8px; }
     .links { display:flex; flex-wrap: wrap; gap: 10px; }
+
     .btn { display:inline-block; padding: 8px 12px; border-radius: 10px; border:1px solid var(--border); background: var(--panel); color: var(--text); cursor: pointer; }
-    .btn:focus { outline: 2px solid var(--accent); outline-offset: 2px; }
-    .btn:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
-    button.btn { font: inherit; }
+    .btn:focus, .btn:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
     .btn:hover { filter: brightness(1.05); text-decoration: none; }
+
     .muted { color: var(--muted); }
     .pub-item { padding: 14px; border-radius: 14px; border:1px solid var(--border); background: linear-gradient(180deg, rgba(255,255,255,0.02), transparent); }
     .pub-actions a { margin-right: 10px; }
+
     code, pre { font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace; background: var(--code); border:1px solid var(--border); border-radius: 10px; padding: 2px 6px; }
+    pre { overflow:auto; }
+
     footer { margin-top: 40px; border-top: 1px solid var(--border); padding: 18px 0 30px; color: var(--muted); }
     .availability { font-weight: 600; letter-spacing:.3px; }
+
     .two-col { display:grid; grid-template-columns: 1fr; gap:16px; }
     @media (min-width: 900px) { .two-col { grid-template-columns: 1.2fr .8fr; } }
 
@@ -85,12 +98,13 @@
     }
 
     .sr-only { position:absolute; width:1px; height:1px; padding:0; margin:-1px; overflow:hidden; clip:rect(0 0 0 0); white-space:nowrap; border:0; }
+
     details { background: var(--panel); border:1px solid var(--border); border-radius:12px; padding:8px 12px; margin-top:8px; }
     details summary { cursor:pointer; list-style:none; }
     details summary::-webkit-details-marker { display:none; }
-    pre { overflow:auto; }
     .copy-btn { margin-left:8px; padding:4px 8px; font-size:12px; border-radius:8px; border:1px solid var(--border); background: var(--card); color: var(--text); cursor:pointer; }
     .copy-btn:hover { filter: brightness(1.05); }
+
     .reveal { opacity: 0; transform: translateY(12px); transition: opacity .5s ease, transform .6s ease; }
     .reveal.in { opacity: 1; transform: none; }
     @media (prefers-reduced-motion: reduce) {
@@ -103,6 +117,7 @@
   <link rel="apple-touch-icon" sizes="180x180" href="/assets/apple-touch-icon.png" />
   <meta name="theme-color" content="#d73f09" />
 
+  <!-- JSON-LD Person -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -110,7 +125,7 @@
     "name": "Haoyang Hong",
     "jobTitle": "Ph.D. Student",
     "affiliation": {"@type":"Organization","name":"Oregon State University"},
-    "url": "https://TheoryMagic.github.io/",
+    "url": "https://theorymagic.github.io/",
     "email": "mailto:honghao@oregonstate.edu",
     "sameAs": [
       "https://scholar.google.com/citations?hl=en&user=UHEqpsEAAAAJ",
@@ -119,6 +134,8 @@
     ]
   }
   </script>
+
+  <!-- JSON-LD ScholarlyArticle -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -137,7 +154,7 @@
     "identifier": "arXiv:2510.07646",
     "url": "https://arxiv.org/abs/2510.07646",
     "sameAs": "https://arxiv.org/abs/2510.07646",
-    "keywords": ["reinforcement learning","bandits","network interference","causal inference"]
+    "keywords": ["reinforcement learning theory","bandit theory","robustness","online learning"]
   }
   </script>
 </head>
@@ -164,10 +181,8 @@
         <div class="muted">Ph.D. Student in AI, Oregon State University · Advisor: <a href="https://huazhengwang.github.io/" title="Huazheng Wang — homepage">Huazheng Wang</a> · Corvallis, OR</div>
         <div class="pills" style="margin-top:10px;">
           <span class="pill">Reinforcement Learning Theory</span>
-          <span class="pill">Bandit Algorithms</span>
-          <span class="pill">Network Interference</span>
-          <span class="pill">Causal Inference</span>
-          <span class="pill">Robust/Adversarial RL</span>
+          <span class="pill">Bandit Theory</span>
+          <span class="pill">Robustness</span>
           <span class="pill">Online Learning</span>
         </div>
         <div class="links">
@@ -184,12 +199,14 @@
       <div class="card">
         <h2>About</h2>
         <p>
-          I'm a Ph.D. student in Artificial Intelligence at Oregon State University. I work on the theory of
-          reinforcement learning and bandit algorithms, with a focus on <em>network interference</em>, causal reasoning, and adversarial robustness.
-          I enjoy turning theory into reproducible systems and experiments.
+          I study the foundations of <strong>reinforcement learning</strong> and <strong>bandit</strong> algorithms:
+          regret analysis, optimal exploration, and inference-aware learning rules. I like theory that becomes
+          practical algorithms and reproducible experiments. Applications sometimes involve networked or causal
+          settings, but the emphasis is on clean theory and provable guarantees.
         </p>
         <p class="muted">Previously: University of Science and Technology of China (USTC), School of the Gifted Young.</p>
       </div>
+
       <div class="card">
         <h2>News</h2>
         <ul class="timeline">
@@ -212,7 +229,7 @@
         {
           "title": "Design-Based Bandits under Network Interference: A Trade-off between Regret and Inference",
           "venue": "NeurIPS 2025",
-          "authors_html": "Zichen Wang*, <strong>Haoyang Hong*</strong>, Chuanhao Li, Haoxuan Li, Zhiheng Zhang, Huazheng Wang <span class=\"muted\">(*equal contribution)</span>",
+          "authors_html": "Zichen Wang*, <strong>Haoyang Hong*</strong>, Chuanhao Li, Haoxuan Li, Zhiheng Zhang, Huazheng Wang <span class=\"muted\">(*equal contribution for first two)</span>",
           "links": [
             {"label":"PDF","href":"https://arxiv.org/pdf/2510.07646.pdf"},
             {"label":"arXiv","href":"https://arxiv.org/abs/2510.07646"}
@@ -227,13 +244,14 @@
       <h2>Research</h2>
       <div class="card">
         <p>
-          I study learning and decision-making under interaction and uncertainty.
-          Recent work develops <strong>design-based bandit</strong> methods for networked settings, quantifying the trade-off between
-          <strong>regret</strong> and <strong>valid statistical inference</strong>. I also investigate the <strong>robustness</strong> of reinforcement
-          learning systems—such as when <strong>reward-poisoning</strong> is possible in linear MDPs—and design <strong>black-box evaluation</strong>
-          protocols. My goal is theory that informs practical algorithms and reproducible experiments.
+          My work centers on <strong>bandit theory</strong> and <strong>reinforcement learning theory</strong>.
+          Recent results develop <strong>design-based bandit</strong> methods that balance learning efficiency
+          (<strong>regret</strong>) with <strong>valid statistical inference</strong>. I also study
+          <strong>robustness</strong> of RL systems—for example, when reward-poisoning can succeed in linear MDPs—
+          and propose <strong>black-box evaluation</strong> protocols. The long-term goal is principled
+          algorithms with clear guarantees and simple, reproducible implementations.
         </p>
-        <p class="muted">Keywords: reinforcement learning theory · bandits · interference · causal inference · robustness · online learning.</p>
+        <p class="muted">Keywords: RL theory · bandit theory · robustness · online learning · (applications to networks & causality when relevant).</p>
       </div>
     </section>
 
@@ -254,7 +272,7 @@
       <h2>Contact</h2>
       <div class="card">
         <p>Email: <a href="mailto:honghao@oregonstate.edu" id="email-link">honghao@oregonstate.edu</a> · Office: Corvallis, OR · Open to collaboration.</p>
-        <p class="muted">For students: I'm happy to discuss RL theory, bandits under interference, and robust RL.</p>
+        <p class="muted">For students: happy to chat about RL theory and bandit algorithms.</p>
         <button class="btn" id="copy-email" type="button">Copy email</button>
       </div>
     </section>
@@ -294,7 +312,7 @@
       if (el) { el.target = '_blank'; el.rel = 'noopener'; }
     });
 
-    // ===== Render publications from JSON =====
+    // ===== Render publications from JSON + BibTeX copy =====
     (function(){
       const dataEl = document.getElementById('pubs-data');
       const listEl = document.getElementById('pubs-list');
@@ -324,7 +342,7 @@
           }
           listEl.appendChild(art);
         });
-      } catch(e) { /* ignore */ }
+      } catch(e) { /* ignore parse errors */ }
     })();
 
     // ===== Reveal on scroll (respect reduced motion) =====
@@ -342,7 +360,7 @@
     // ===== Live region announcements =====
     function announce(msg){ const live = document.getElementById('live-region'); if(live){ live.textContent=''; setTimeout(()=> live.textContent=msg, 10);} }
 
-    // ===== Copy email button (single source of truth) =====
+    // ===== Copy email button =====
     (function(){
       const btn = document.getElementById('copy-email');
       const a = document.getElementById('email-link');
