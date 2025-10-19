@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Haoyang Hong — Academic Homepage</title>
+  <meta name="description" content="Haoyang Hong — Ph.D. student in AI at Oregon State University. Research: RL theory, bandits, network interference, causal inference, robust/adversarial RL, online learning. Available Summer 2026 for internships (F-1 CPT)." />
+  <meta property="og:title" content="Haoyang Hong — Academic Homepage" />
+  <meta property="og:description" content="RL theory · Bandits · Network Interference · Causal Inference · Robust/Adversarial RL · Online Learning" />
+  <meta property="og:type" content="website" />
+  <style>
+    /* Minimal, elegant, accessible, single‑file CSS. No external deps. */
+    :root {
+      --bg: #0b0c10;
+      --panel: #111317;
+      --text: #e6e7eb;
+      --muted: #9aa1ac;
+      --accent: #6ea8fe; /* you can change this to your brand color */
+      --card: #151821;
+      --border: #2a2f3a;
+      --code: #0e1116;
+      --shadow: 0 10px 30px rgba(0,0,0,.3);
+      --radius: 16px;
+    }
+    @media (prefers-color-scheme: light) {
+      :root { --bg: #f7f7fb; --panel: #ffffff; --text: #121316; --muted: #536071; --card: #ffffff; --border:#e8eaf0; --code:#f5f7fb; }
+    }
+    html, body { height: 100%; }
+    body {
+      margin: 0; background: var(--bg); color: var(--text); font-family: ui-sans-serif, -apple-system, Segoe UI, Roboto, Helvetica, Arial, Apple Color Emoji, Segoe UI Emoji;
+      line-height: 1.6; letter-spacing: .2px; display: flex; flex-direction: column;
+    }
+    a { color: var(--accent); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    .container { width: min(1100px, 92%); margin: 0 auto; }
+    header { position: sticky; top: 0; z-index: 10; background: rgba(11,12,16,.7); backdrop-filter: blur(10px); border-bottom: 1px solid var(--border); }
+    header .inner { display: flex; align-items: center; justify-content: space-between; padding: 14px 0; }
+    nav a { margin: 0 10px; padding: 6px 10px; border-radius: 10px; }
+    nav a:hover { background: var(--panel); text-decoration: none; }
+    .hero { padding: 48px 0 28px; display: grid; grid-template-columns: 120px 1fr; grid-gap: 20px; align-items: center; }
+    .avatar { width: 120px; height: 120px; border-radius: 50%; object-fit: cover; box-shadow: var(--shadow); }
+    .card { background: var(--card); border: 1px solid var(--border); border-radius: var(--radius); box-shadow: var(--shadow); padding: 18px 20px; }
+    .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 16px; }
+    h1 { font-size: clamp(28px, 4.2vw, 38px); line-height: 1.1; margin: 0 0 6px; }
+    h2 { font-size: clamp(22px, 3.2vw, 28px); margin: 30px 0 12px; border-bottom: 1px dashed var(--border); padding-bottom: 8px; }
+    h3 { font-size: 18px; margin: 14px 0 8px; }
+    .pill { display:inline-flex; align-items:center; gap:8px; background: var(--panel); color: var(--text); border:1px solid var(--border); padding: 6px 10px; border-radius: 99px; font-size: 13px; }
+    .pills { display:flex; flex-wrap:wrap; gap:8px; }
+    .links { display:flex; flex-wrap: wrap; gap: 10px; margin-top: 10px; }
+    .btn { display:inline-block; padding: 8px 12px; border-radius: 10px; border:1px solid var(--border); background: var(--panel); }
+    .btn:hover { filter: brightness(1.05); text-decoration: none; }
+    .muted { color: var(--muted); }
+    .pub-item { padding: 14px; border-radius: 14px; border:1px solid var(--border); background: linear-gradient(180deg, rgba(255,255,255,0.02), transparent); }
+    .pub-actions a { margin-right: 10px; }
+    code, pre { font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace; background: var(--code); border:1px solid var(--border); border-radius: 10px; padding: 2px 6px; }
+    footer { margin-top: 40px; border-top: 1px solid var(--border); padding: 18px 0 30px; color: var(--muted); }
+    .availability { font-weight: 600; letter-spacing:.3px; }
+    .two-col { display:grid; grid-template-columns: 1fr; gap:16px; }
+    @media (min-width: 900px) { .two-col { grid-template-columns: 1.2fr .8fr; } }
+    .card { background: var(--card); border: 1px solid var(--border); border-radius: var(--radius); box-shadow: var(--shadow); padding: 18px 20px; }
+    .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 16px; }
+    h1 { font-size: clamp(28px, 4.2vw, 38px); line-height: 1.1; margin: 0 0 6px; }
+    h2 { font-size: clamp(22px, 3.2vw, 28px); margin: 30px 0 12px; border-bottom: 1px dashed var(--border); padding-bottom: 8px; }
+    h3 { font-size: 18px; margin: 14px 0 8px; }
+    .pill { display:inline-flex; align-items:center; gap:8px; background: var(--panel); color: var(--text); border:1px solid var(--border); padding: 6px 10px; border-radius: 99px; font-size: 13px; }
+    .pills { display:flex; flex-wrap:wrap; gap:8px; }
+    .links { display:flex; flex-wrap: wrap; gap: 10px; margin-top: 10px; }
+    .btn { display:inline-block; padding: 8px 12px; border-radius: 10px; border:1px solid var(--border); background: var(--panel); }
+    .btn:hover { filter: brightness(1.05); text-decoration: none; }
+    .muted { color: var(--muted); }
+    .pub-item { padding: 14px; border-radius: 14px; border:1px solid var(--border); background: linear-gradient(180deg, rgba(255,255,255,0.02), transparent); }
+    .pub-actions a { margin-right: 10px; }
+    code, pre { font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace; background: var(--code); border:1px solid var(--border); border-radius: 10px; padding: 2px 6px; }
+    footer { margin-top: 40px; border-top: 1px solid var(--border); padding: 18px 0 30px; color: var(--muted); }
+    .availability { font-weight: 600; letter-spacing:.3px; }
+    .two-col { display:grid; grid-template-columns: 1fr; gap:16px; }
+    @media (min-width: 900px) { .two-col { grid-template-columns: 1.2fr .8fr; } }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container inner">
+      <div><strong>Haoyang Hong</strong></div>
+      <nav aria-label="Primary">
+        <a href="#about">About</a>
+        <a href="#publications">Publications</a>
+        <a href="#research">Research</a>
+        <a href="#teaching">Teaching</a>
+        <a href="#talks">Talks</a>
+        <a href="#open-source">Open‑source</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="hero">
+      <img class="avatar" src="/assets/me.jpg" alt="Portrait of Haoyang Hong">
+      <div>
+        <h1>Haoyang Hong</h1>
+        <div class="muted">Ph.D. Student in AI, Oregon State University · Advisor: <a href="https://huazhengwang.github.io/" title="Huazheng Wang — homepage">Huazheng Wang</a> · Corvallis, OR</div>
+        <div class="pills" style="margin-top:10px;">
+          <span class="pill">Reinforcement Learning Theory</span>
+          <span class="pill">Bandit Algorithms</span>
+          <span class="pill">Network Interference</span>
+          <span class="pill">Causal Inference</span>
+          <span class="pill">Robust/Adversarial RL</span>
+          <span class="pill">Online Learning</span>
+        </div>
+        <div class="links">
+          <a class="btn" href="#" id="scholar">Google Scholar</a>
+          <a class="btn" href="#" id="github">GitHub</a>
+          <a class="btn" href="#" id="linkedin">LinkedIn</a>
+          <a class="btn" href="#cv" id="cv">CV (PDF)</a>
+          <span class="pill availability">Available: Summer 2026 (12–16 weeks), F‑1 CPT</span>
+        </div>
+      </div>
+    </section>
+
+    <section id="about" class="two-col">
+      <div class="card">
+        <h2>About</h2>
+        <p>
+          I am a first‑year Ph.D. student in Artificial Intelligence at Oregon State University. My research focuses on the theory of
+          reinforcement learning and bandit algorithms under <em>network interference</em>, causal assumptions, and adversarial robustness.
+          I like building theory‑backed systems and reproducible experiments.
+        </p>
+        <p class="muted">Previously: University of Science and Technology of China (USTC, School of the Gifted Young).</p>
+      </div>
+      <div class="card">
+        <h2>News</h2>
+        <ul>
+          <li><strong>[2025]</strong> Paper accepted to <em>NeurIPS 2025</em>: Design‑Based Bandits under Network Interference.</li>
+          <li><strong>[2025]</strong> Reading Group talk: Linear MDPs and LSVI‑UCB — Deep Dive.</li>
+          <li><strong>[2026]</strong> Open to Research Internships (Summer, 12–16 weeks).</li>
+        </ul>
+      </div>
+    </section>
+
+    <section id="publications">
+      <h2>Publications</h2>
+      <div class="grid">
+        <article class="pub-item">
+          <h3>Design‑Based Bandits under Network Interference: A Trade‑off between Regret and Inference</h3>
+          <div class="muted"><em>NeurIPS 2025</em>. Zichen Wang*, Zhiheng Zhang*, <strong>Haoyang Hong*</strong>. <span class="muted">(*equal contribution)</span></div>
+          <div class="pub-actions" style="margin-top:6px;">
+            <a href="https://arxiv.org/pdf/2510.07646.pdf" title="PDF on arXiv">PDF</a>
+            <a href="https://arxiv.org/abs/2510.07646" title="arXiv entry">arXiv</a>
+            <a href="#" title="Code — coming soon">Code</a>
+            <a href="#" title="Slides — coming soon">Slides</a>
+          </div>
+        </article>
+        <article class="pub-item">
+          <h3>When Can You Poison Rewards? A Tight Characterization of Attackability in Linear MDPs</h3>
+          <div class="muted">Manuscript in preparation. Jose Efraim Aguilar Escamilla*, Haoyu Zhao*, <strong>Haoyang Hong*</strong>. <span class="muted">(*equal contribution)</span></div>
+          <div class="pub-actions" style="margin-top:6px;">
+            <a href="#" title="Draft link">Draft</a>
+            <a href="#" title="Slides — coming soon">Slides</a>
+            <a href="#" title="Experiments repo">Experiments</a>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section id="research">
+      <h2>Research</h2>
+      <div class="card">
+        <p>
+          My current work studies <strong>design‑based bandits under interference</strong>, exploring the Pareto frontier between regret minimization and
+          valid statistical inference. I also investigate <strong>reward‑poisoning attackability</strong> in linear MDPs, seeking necessary and sufficient
+          conditions and practical black‑box attack frameworks.
+        </p>
+        <p class="muted">Keywords: regret analysis · exploration‑exploitation · causal inference under interference · robustness · reproducibility.</p>
+      </div>
+    </section>
+
+    <section id="teaching">
+      <h2>Teaching & Service</h2>
+      <div class="grid">
+        <div class="card">
+          <h3>Graduate Teaching Assistant</h3>
+          <ul>
+            <li>AI 534 — Machine Learning (OSU), Fall 2025</li>
+            <li>CS 450/550 — Computer Graphics (OSU), Fall 2025</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h3>Talks</h3>
+          <ul>
+            <li>Linear MDPs and LSVI‑UCB — Deep Dive (OSU Reading Group, 2025)</li>
+            <li>LLM‑Generated Hard Negatives for IR Fine‑Tuning (Course Final, 2025)</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section id="open-source">
+      <h2>Open‑source & Demos</h2>
+      <div class="card">
+        <ul>
+          <li>Network bandit simulator (reproducible scripts). <span class="muted">[Link coming soon]</span></li>
+          <li>RL evaluation toolkit (PyTorch/Lightning). <span class="muted">[Link coming soon]</span></li>
+        </ul>
+      </div>
+    </section>
+
+    <section id="contact">
+      <h2>Contact</h2>
+      <div class="card">
+        <p>Email: <a href="mailto:honghao@oregonstate.edu" id="email-link">honghao@oregonstate.edu</a> · Office: Corvallis, OR · Open to collaboration.</p>
+        <p class="muted">For students: I'm happy to discuss RL theory, bandits under interference, and robust RL.</p>
+        <button class="btn" id="copy-email" type="button">Copy email</button>
+      </div>
+    </section>
+
+    <footer>
+      <div class="container">
+        <div>© <span id="year"></span> Haoyang Hong · Built with vanilla HTML/CSS. No cookies.</div>
+      </div>
+    </footer>
+  </main>
+
+  <script>
+    // Light JS for UX: year, copy email, and easy config placeholders
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    document.getElementById('copy-email').addEventListener('click', () => {
+      const a = document.getElementById('email-link');
+      const email = a.textContent.replace('[at]', '@'); // supports obfuscation if you use it
+      navigator.clipboard.writeText(email).then(() => {
+        const prev = a.textContent; a.textContent = 'Copied!';
+        setTimeout(()=> a.textContent = prev, 900);
+      });
+    });
+
+    // ===== QUICK CONFIG (replace '#' with your real links) =====
+    const LINKS = {
+      scholar: 'https://scholar.google.com/citations?hl=en&user=UHEqpsEAAAAJ',
+      github: 'https://github.com/TheoryMagic',
+      linkedin: 'https://www.linkedin.com/in/haoyanghong1337',
+      cv: '/assets/cv.pdf', // upload your CV to /assets/cv.pdf
+      advisor: 'https://huazhengwang.github.io/',
+      email: 'honghao@oregonstate.edu'
+    };
+    for (const k of ['scholar','github','linkedin','cv']) {
+      const el = document.getElementById(k); if (el && LINKS[k]) el.href = LINKS[k];
+    }
+    const adv = document.querySelector('.hero a'); if (adv && LINKS.advisor) adv.href = LINKS.advisor;
+    const emailA = document.getElementById('email-link'); if (emailA && LINKS.email) emailA.textContent = LINKS.email;
+  </script>
+</body>
+</html>
