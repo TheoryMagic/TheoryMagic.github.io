@@ -1,851 +1,680 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Haoyang Hong — Academic Homepage</title>
-
-  <meta name="description" content="Haoyang Hong — Second-year Ph.D. student in AI at Oregon State University. Research focus: reinforcement learning theory, bandit theory, online learning, robustness, and multi-fidelity learning." />
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Haoyang Hong | Reinforcement Learning Theory</title>
+  <meta name="description" content="Haoyang Hong is a Ph.D. student at Oregon State University working on reinforcement learning theory, bandits, and statistical inference. Previously a research intern at Microsoft Research Asia.">
   <link rel="canonical" href="https://theorymagic.github.io/">
-  <meta name="color-scheme" content="dark light">
-
-  <meta property="og:title" content="Haoyang Hong — Academic Homepage" />
-  <meta property="og:description" content="Reinforcement Learning Theory · Bandit Theory · Robustness · Online Learning" />
-  <meta property="og:type" content="website" />
-  <meta property="og:url" content="https://theorymagic.github.io/" />
-  <meta property="og:site_name" content="Haoyang Hong" />
-  <meta property="og:image" content="https://theorymagic.github.io/assets/og-card.png" />
-  <meta property="og:image:width" content="1200" />
-  <meta property="og:image:height" content="630" />
-  <meta property="og:image:alt" content="Haoyang Hong — Ph.D. Student at Oregon State University" />
-  <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="Haoyang Hong — Academic Homepage" />
-  <meta name="twitter:description" content="Reinforcement Learning Theory · Bandit Theory · Robustness · Online Learning" />
-  <meta name="twitter:image" content="https://theorymagic.github.io/assets/og-card.png" />
-
+  <meta name="color-scheme" content="light">
+  <meta name="theme-color" content="#ffffff">
+  <meta property="og:title" content="Haoyang Hong | Reinforcement Learning Theory">
+  <meta property="og:description" content="Theoretical foundations of sequential decision-making, from reinforcement learning and bandits to reward robustness and adaptive inference.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://theorymagic.github.io/">
+  <meta property="og:image" content="https://theorymagic.github.io/assets/me.jpg">
+  <meta property="og:image:alt" content="Haoyang Hong">
+  <meta name="twitter:card" content="summary">
+  <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="assets/favicon-16.png">
+  <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
   <style>
-    :root {
-      --bg: #0b0c10;
-      --panel: #111317;
-      --text: #e6e7eb;
-      --muted: #9aa1ac;
-      --accent: #d73f09;
-      --card: #151821;
-      --border: #2a2f3a;
-      --code: #0e1116;
-      --shadow: 0 10px 30px rgba(0,0,0,.3);
-      --radius: 16px;
-      --header-bg: rgba(11,12,16,.7);
+/* Default css file for jemdoc. */
+
+table#tlayout {
+	border: none;
+	border-collapse: separate;
+	background: white;
+}
+
+body {
+	background: white;
+	font-family: Georgia, serif;
+	padding-bottom: 8px;
+	margin: 0;
+}
+
+#layout-menu {
+	background: #f6f6f6;
+	border: 1px solid #dddddd;
+	padding-top: 0.5em;
+	padding-left: 8px;
+	padding-right: 8px;
+	font-size: 1.0em;
+	width: auto;
+	white-space: nowrap;
+	text-align: left;
+	vertical-align: top;
+}
+
+#layout-menu td {
+	background: #f4f4f4;
+	vertical-align: top;
+}
+
+#layout-content {
+	padding-top: 0.0em;
+	padding-left: 1.0em;
+	padding-right: 1.0em;
+	border: none;
+	background: white;
+	text-align: left;
+	vertical-align: top;
+	min-width: 800px;
+	width: 800px;
+}
+
+#layout-menu a {
+	line-height: 1.5em;
+	margin-left: 0.5em;
+}
+
+tt {
+	background: #ffffdd;
+}
+
+pre, tt {
+	font-size: 90%;
+	font-family: monaco, monospace;
+}
+
+a, a > tt {
+	color: #224b8d;
+	text-decoration: none;
+}
+
+a:hover {
+	border-bottom: 1px gray dotted;
+}
+
+#layout-menu a.current:link, #layout-menu a.current:visited {
+	color: #022b6d;
+	border-bottom: 1px gray solid;
+}
+#layout-menu a:link, #layout-menu a:visited, #layout-menu a:hover {
+	color: #527bbd;
+	text-decoration: none;
+}
+#layout-menu a:hover {
+	text-decoration: none;
+}
+
+div.menu-category {
+	border-bottom: 1px solid gray;
+	margin-top: 0.8em;
+	padding-top: 0.2em;
+	padding-bottom: 0.1em;
+	font-weight: bold;
+}
+
+div.menu-item {
+	padding-left: 16px;
+	text-indent: -16px;
+}
+
+div#toptitle {
+	padding-bottom: 0.2em;
+	margin-bottom: 1.5em;
+	border-bottom: 3px double gray;
+}
+
+/* Reduce space if we begin the page with a title. */
+div#toptitle + h2, div#toptitle + h3 {
+	margin-top: -0.7em;
+}
+
+div#subtitle {
+	margin-top: 0.0em;
+	margin-bottom: 0.0em;
+	padding-top: 0em;
+	padding-bottom: 0.1em;
+}
+
+em {
+	font-style: italic;
+}
+
+strong {
+	font-weight: bold;
+}
+
+
+h1, h2, h3 {
+	color: #527bbd;
+	margin-top: 0.7em;
+	margin-bottom: 0.3em;
+	padding-bottom: 0.2em;
+	line-height: 1.0;
+	padding-top: 0.5em;
+	border-bottom: 1px solid #aaaaaa;
+}
+
+h1 {
+	font-size: 165%;
+}
+
+h2 {
+	padding-top: 0.8em;
+	font-size: 125%;
+}
+
+h2 + h3 {
+	padding-top: 0.2em;
+}
+
+h3 {
+	font-size: 110%;
+	border-bottom: none;
+}
+
+p {
+	margin-top: 0.0em;
+	margin-bottom: 0.8em;
+	padding: 0;
+	line-height: 1.3;
+}
+
+pre {
+	padding: 0;
+	margin: 0;
+}
+
+div#footer {
+	font-size: small;
+	border-top: 1px solid #c0c0c0;
+	padding-top: 0.1em;
+	margin-top: 4.0em;
+	color: #c0c0c0;
+}
+
+div#footer a {
+	color: #80a0b0;
+}
+
+div#footer-text {
+	float: left;
+	padding-bottom: 8px;
+}
+
+ul, ol, dl {
+	margin-top: 0.2em;
+	padding-top: 0;
+	margin-bottom: 0.8em;
+}
+
+dt {
+	margin-top: 0.5em;
+	margin-bottom: 0;
+}
+
+dl {
+	margin-left: 20px;
+}
+
+dd {
+	color: #222222;
+}
+
+dd > *:first-child {
+	margin-top: 0;
+}
+
+ul {
+	list-style-position: outside;
+	list-style-type: square;
+}
+
+p + ul, p + ol {
+	margin-top: -0.5em;
+}
+
+li ul, li ol {
+	margin-top: -0.3em;
+}
+
+ol {
+	list-style-position: outside;
+	list-style-type: decimal;
+}
+
+li p, dd p {
+	margin-bottom: 0.3em;
+}
+
+
+ol ol {
+	list-style-type: lower-alpha;
+}
+
+ol ol ol {
+	list-style-type: lower-roman;
+}
+
+p + div.codeblock {
+	margin-top: -0.6em;
+}
+
+div.codeblock, div.infoblock {
+	margin-right: 0%;
+	margin-top: 1.2em;
+	margin-bottom: 1.3em;
+}
+
+div.blocktitle {
+	font-weight: bold;
+	color: #cd7b62;
+	margin-top: 1.2em;
+	margin-bottom: 0.1em;
+}
+
+div.blockcontent {
+	border: 1px solid silver;
+	padding: 0.3em 0.5em;
+}
+
+div.infoblock > div.blockcontent {
+	background: #ffffee;
+}
+
+div.blockcontent p + ul, div.blockcontent p + ol {
+	margin-top: 0.4em;
+}
+
+div.infoblock p {
+	margin-bottom: 0em;
+}
+
+div.infoblock li p, div.infoblock dd p {
+	margin-bottom: 0.5em;
+}
+
+div.infoblock p + p {
+	margin-top: 0.8em;
+}
+
+div.codeblock > div.blockcontent {
+	background: #f6f6f6;
+}
+
+span.pycommand {
+	color: #000070;
+}
+
+span.statement {
+	color: #008800;
+}
+span.builtin {
+	color: #000088;
+}
+span.special {
+	color: #990000;
+}
+span.operator {
+	color: #880000;
+}
+span.error {
+	color: #aa0000;
+}
+span.comment, span.comment > *, span.string, span.string > * {
+	color: #606060;
+}
+
+@media print {
+	#layout-menu {
+		display: none;
+	}
+
+}
+
+#fwtitle {
+	margin: 2px;
+}
+
+#fwtitle #toptitle {
+	padding-left: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+#layout-content h1:first-child, #layout-content h2:first-child, #layout-content h3:first-child {
+	margin-top: -0.7em;
+}
+
+div#toptitle h1, #layout-content div#toptitle h1 {
+	margin-bottom: 0.0em;
+	padding-bottom: 0.1em;
+	padding-top: 0;
+	margin-top: 0.5em;
+	border-bottom: none;
+}
+
+img.eq {
+	padding: 0;
+	padding-left: 0.1em;
+	padding-right: 0.1em;
+	margin: 0;
+}
+
+img.eqwl {
+	padding-left: 2em;
+	padding-top: 0.6em;
+	padding-bottom: 0.2em;
+	margin: 0;
+}
+
+table {
+	border: 2px solid black;
+	border-collapse: collapse;
+}
+
+td {
+	padding: 2px;
+	padding-left: 0.5em;
+	padding-right: 0.5em;
+	text-align: center;
+	border: 1px solid gray;
+}
+
+table + table {
+	margin-top: 1em;
+}
+
+tr.heading {
+	font-weight: bold;
+	border-bottom: 2px solid black;
+}
+
+img {
+	border: none;
+}
+
+table.imgtable, table.imgtable td {
+	border: none;
+	text-align: left;
+}
+
+div.ra {
+  text-align: right;
+}
+
+
+    /* Single-page and mobile adaptations to the original jemdoc stylesheet. */
+    * { box-sizing: border-box; }
+    body { color: #222; font-size: 17px; }
+    #tlayout { display: grid; grid-template-columns: 150px minmax(0, 850px); max-width: 1000px; margin: 12px auto; align-items: stretch; }
+    #layout-menu { padding: 8px 12px; }
+    #layout-menu a { margin-left: 0; }
+    .menu-item { margin: 4px 0; }
+    #layout-content { min-width: 0; width: auto; padding: 0 22px 20px; }
+    #toptitle h1 { color: #274878; }
+    h2 { color: #274878; line-height: 1.2; }
+    h3 { color: #222; line-height: 1.35; padding-top: 0; }
+    p, li { line-height: 1.5; }
+    section { margin-top: 24px; }
+    .profile { display: flex; gap: 23px; align-items: center; margin-bottom: 18px; }
+    .portrait { display: block; width: 131px; height: 157px; object-fit: cover; }
+    .profile p { margin: 0; }
+    .profile-links { margin-top: 10px !important; }
+    .profile-links a { display: inline-block; margin-right: 12px; }
+    div.infoblock > div.blockcontent { background: #fff; }
+    .blockcontent p { margin: 0; }
+    .research-questions, .experience-points { padding-left: 23px; }
+    .research-questions li, .experience-points li { margin-bottom: 9px; }
+    #layout-content section > h2:first-child { margin-top: 0.7em; margin-bottom: 0.65em; }
+    #layout-content h3:first-child { margin-top: 0; }
+    .publication { margin-bottom: 24px; break-inside: avoid; }
+    .publication h3 { font-size: 1em; margin: 0 0 5px; }
+    .authors, .venue, .paper-links, details { font-size: 0.93em; }
+    .authors { margin-bottom: 2px; }
+    .venue { color: #224b8d; font-weight: bold; margin-bottom: 6px; }
+    .paper-question { margin-bottom: 6px; }
+    .paper-links { margin-bottom: 4px; }
+    .section-note, .entry-meta { color: #555; font-size: 0.9em; }
+    .entry-heading { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 3px 15px; }
+    .entry-heading h3 { margin: 0 0 4px; }
+    .education-entry { margin-bottom: 17px; }
+    .education-entry p { margin-bottom: 3px; }
+    summary { cursor: pointer; width: fit-content; color: #224b8d; }
+    pre { white-space: pre-wrap; overflow-wrap: anywhere; padding: 12px; margin-top: 8px; border: 1px solid #ddd; background: #f6f6f6; line-height: 1.5; }
+    button { margin-top: 7px; padding: 4px 9px; border: 1px solid #bbb; background: #fff; color: #224b8d; font: inherit; cursor: pointer; }
+    a:focus-visible, button:focus-visible, summary:focus-visible { outline: 2px solid #224b8d; outline-offset: 3px; }
+    #footer { color: #666 !important; margin-top: 3em !important; padding-top: 8px !important; }
+    #footer a { color: #224b8d !important; }
+    .skip-link { position: absolute; left: -10000px; }
+    .skip-link:focus { left: 10px; top: 10px; padding: 8px; background: #fff; }
+    .sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); }
+    @media (max-width: 720px) {
+      #tlayout { display: block; margin: 0; }
+      #layout-menu { display: flex; flex-wrap: wrap; gap: 6px 16px; padding: 10px 18px; border-width: 0 0 1px; white-space: normal; }
+      #layout-menu .menu-category { display: none; }
+      #layout-menu .menu-item { padding: 0; text-indent: 0; margin: 0; }
+      #layout-content { padding: 0 18px 20px; }
+      body { font-size: 16px; }
+      .profile { gap: 17px; align-items: flex-start; }
+      .portrait { width: 100px; height: 125px; }
+      .profile-links a { margin-right: 8px; }
+    }
+    @media (max-width: 380px) {
+      .profile { flex-direction: column; }
+    }
+    @media print {
+      #tlayout { display: block; margin: 0; }
+      #layout-menu, details, .skip-link { display: none; }
+      #layout-content { padding: 0; }
+      h2 { break-after: avoid; }
     }
 
-    @media (prefers-color-scheme: light) {
-      :root {
-        --bg: #f7f7fb;
-        --panel: #ffffff;
-        --text: #121316;
-        --muted: #536071;
-        --card: #ffffff;
-        --border: #e8eaf0;
-        --code: #f5f7fb;
-        --header-bg: rgba(247,247,251,.82);
-      }
-    }
-
-    html, body {
-      height: 100%;
-    }
-
-    body {
-      margin: 0;
-      background: var(--bg);
-      color: var(--text);
-      font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";
-      line-height: 1.6;
-      letter-spacing: .2px;
-      display: flex;
-      flex-direction: column;
-    }
-
-    a {
-      color: var(--accent);
-      text-decoration: none;
-    }
-
-    a:hover {
-      text-decoration: underline;
-    }
-
-    .container {
-      width: min(1100px, 92%);
-      margin: 0 auto;
-    }
-
-    header {
-      position: sticky;
-      top: 0;
-      z-index: 10;
-      background: var(--header-bg);
-      backdrop-filter: blur(10px);
-      border-bottom: 1px solid var(--border);
-    }
-
-    header .inner {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 14px 0;
-    }
-
-    nav a {
-      margin: 0 10px;
-      padding: 6px 10px;
-      border-radius: 10px;
-    }
-
-    nav a:hover {
-      background: var(--panel);
-      text-decoration: none;
-    }
-
-    .hero {
-      padding: 48px 0 28px;
-      display: grid;
-      grid-template-columns: 120px 1fr;
-      grid-gap: 20px;
-      align-items: center;
-    }
-
-    .avatar {
-      width: 120px;
-      height: 120px;
-      border-radius: 50%;
-      object-fit: cover;
-      box-shadow: var(--shadow);
-    }
-
-    .card {
-      background: var(--card);
-      border: 1px solid var(--border);
-      border-radius: var(--radius);
-      box-shadow: var(--shadow);
-      padding: 18px 20px;
-    }
-
-    .grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 16px;
-    }
-
-    h1 {
-      font-size: clamp(28px, 4.2vw, 38px);
-      line-height: 1.1;
-      margin: 0 0 6px;
-    }
-
-    h2 {
-      font-size: clamp(22px, 3.2vw, 28px);
-      margin: 30px 0 12px;
-      border-bottom: 1px dashed var(--border);
-      padding-bottom: 8px;
-    }
-
-    h3 {
-      font-size: 18px;
-      margin: 14px 0 8px;
-    }
-
-    .pill {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      background: var(--panel);
-      color: var(--text);
-      border: 1px solid var(--border);
-      padding: 6px 10px;
-      border-radius: 99px;
-      font-size: 13px;
-    }
-
-    .pills {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 8px;
-    }
-
-    .links {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-      margin-top: 12px;
-    }
-
-    .btn {
-      display: inline-block;
-      padding: 8px 12px;
-      border-radius: 10px;
-      border: 1px solid var(--border);
-      background: var(--panel);
-      color: var(--text);
-      cursor: pointer;
-    }
-
-    .btn:focus,
-    .btn:focus-visible {
-      outline: 2px solid var(--accent);
-      outline-offset: 2px;
-    }
-
-    .btn:hover {
-      filter: brightness(1.05);
-      text-decoration: none;
-    }
-
-    .muted {
-      color: var(--muted);
-    }
-
-    .availability {
-      font-weight: 600;
-      letter-spacing: .3px;
-    }
-
-    .pub-item {
-      padding: 14px;
-      border-radius: 14px;
-      border: 1px solid var(--border);
-      background: linear-gradient(180deg, rgba(255,255,255,0.02), transparent);
-    }
-
-    .pub-actions a {
-      margin-right: 10px;
-    }
-
-    code, pre {
-      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace;
-      background: var(--code);
-      border: 1px solid var(--border);
-      border-radius: 10px;
-      padding: 2px 6px;
-    }
-
-    pre {
-      overflow: auto;
-    }
-
-    footer {
-      margin-top: 40px;
-      border-top: 1px solid var(--border);
-      padding: 18px 0 30px;
-      color: var(--muted);
-    }
-
-    .two-col {
-      display: grid;
-      grid-template-columns: 1fr;
-      gap: 16px;
-    }
-
-    @media (min-width: 900px) {
-      .two-col {
-        grid-template-columns: 1.2fr .8fr;
-      }
-    }
-
-    .timeline {
-      list-style: none;
-      padding: 0;
-      margin: 8px 0 0;
-      position: relative;
-    }
-
-    .timeline::before {
-      content: "";
-      position: absolute;
-      left: 80px;
-      top: 0;
-      bottom: 0;
-      border-left: 2px dashed var(--border);
-    }
-
-    .timeline li {
-      display: grid;
-      grid-template-columns: 72px 1fr;
-      column-gap: 16px;
-      padding: 12px 0;
-    }
-
-    .timeline time {
-      grid-column: 1;
-      text-align: right;
-      font-weight: 700;
-      color: var(--muted);
-    }
-
-    .timeline p {
-      grid-column: 2;
-      margin: 0;
-    }
-
-    @media (max-width: 480px) {
-      .hero {
-        grid-template-columns: 1fr;
-      }
-
-      .timeline::before {
-        left: 68px;
-      }
-
-      .timeline li {
-        grid-template-columns: 60px 1fr;
-      }
-    }
-
-    .sr-only {
-      position: absolute;
-      width: 1px;
-      height: 1px;
-      padding: 0;
-      margin: -1px;
-      overflow: hidden;
-      clip: rect(0 0 0 0);
-      white-space: nowrap;
-      border: 0;
-    }
-
-    details {
-      background: var(--panel);
-      border: 1px solid var(--border);
-      border-radius: 12px;
-      padding: 8px 12px;
-      margin-top: 8px;
-    }
-
-    details summary {
-      cursor: pointer;
-      list-style: none;
-    }
-
-    details summary::-webkit-details-marker {
-      display: none;
-    }
-
-    .copy-btn {
-      margin-left: 8px;
-      padding: 4px 8px;
-      font-size: 12px;
-      border-radius: 8px;
-      border: 1px solid var(--border);
-      background: var(--card);
-      color: var(--text);
-      cursor: pointer;
-    }
-
-    .copy-btn:hover {
-      filter: brightness(1.05);
-    }
-
-    .reveal {
-      opacity: 0;
-      transform: translateY(12px);
-      transition: opacity .5s ease, transform .6s ease;
-    }
-
-    .reveal.in {
-      opacity: 1;
-      transform: none;
-    }
-
-    @media (prefers-reduced-motion: reduce) {
-      .reveal {
-        opacity: 1 !important;
-        transform: none !important;
-        transition: none !important;
-      }
-    }
   </style>
-
-  <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32.png" />
-  <link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon-16.png" />
-  <link rel="apple-touch-icon" sizes="180x180" href="/assets/apple-touch-icon.png" />
-  <meta name="theme-color" content="#d73f09" />
-
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@graph": [
-      {
-        "@type": "Person",
-        "name": "Haoyang Hong",
-        "jobTitle": "Ph.D. Student in Artificial Intelligence",
-        "affiliation": {
-          "@type": "Organization",
-          "name": "Oregon State University"
-        },
-        "alumniOf": {
-          "@type": "CollegeOrUniversity",
-          "name": "University of Science and Technology of China"
-        },
-        "url": "https://theorymagic.github.io/",
-        "email": "mailto:honghao@oregonstate.edu",
-        "sameAs": [
-          "https://scholar.google.com/citations?hl=en&user=UHEqpsEAAAAJ",
-          "https://github.com/TheoryMagic",
-          "https://www.linkedin.com/in/haoyanghong1337"
-        ],
-        "knowsAbout": [
-          "Reinforcement Learning Theory",
-          "Bandit Theory",
-          "Online Learning",
-          "KL-Regularized Learning",
-          "Robustness",
-          "Multi-Fidelity Learning"
-        ]
-      },
-      {
-        "@type": "ScholarlyArticle",
-        "name": "Online KL-Regularized Reinforcement Learning with Function Approximation under Misspecification",
-        "author": [
-          {"@type":"Person","name":"Haoyang Hong"},
-          {"@type":"Person","name":"Zichen Wang"},
-          {"@type":"Person","name":"Quanquan Gu"},
-          {"@type":"Person","name":"Huazheng Wang"}
-        ],
-        "datePublished": "2026",
-        "inLanguage": "en",
-        "isPartOf": {
-          "@type": "Periodical",
-          "name": "RLC 2026"
-        },
-        "keywords": [
-          "reinforcement learning theory",
-          "KL regularization",
-          "function approximation",
-          "misspecification"
-        ]
-      },
-      {
-        "@type": "ScholarlyArticle",
-        "name": "When Can You Poison Rewards? A Tight Characterization of Reward Poisoning in Linear MDPs",
-        "author": [
-          {"@type":"Person","name":"Jose Efraim Aguilar Escamilla"},
-          {"@type":"Person","name":"Haoyang Hong"},
-          {"@type":"Person","name":"Jiawei Li"},
-          {"@type":"Person","name":"Haoyu Zhao"},
-          {"@type":"Person","name":"Xuezhou Zhang"},
-          {"@type":"Person","name":"Sanghyun Hong"},
-          {"@type":"Person","name":"Huazheng Wang"}
-        ],
-        "datePublished": "2026",
-        "inLanguage": "en",
-        "isPartOf": {
-          "@type": "Periodical",
-          "name": "ICML 2026"
-        },
-        "keywords": [
-          "reinforcement learning theory",
-          "linear MDPs",
-          "reward poisoning",
-          "robustness"
-        ]
-      },
-      {
-        "@type": "ScholarlyArticle",
-        "name": "Beyond Static Bias: Adaptive Multi-Fidelity Bandits with Improving Proxies",
-        "author": [
-          {"@type":"Person","name":"Muyun Lu"},
-          {"@type":"Person","name":"Haoyang Hong"},
-          {"@type":"Person","name":"Huazheng Wang"},
-          {"@type":"Person","name":"Ying Lin"}
-        ],
-        "datePublished": "2026",
-        "inLanguage": "en",
-        "identifier": "arXiv:2605.08558",
-        "url": "https://arxiv.org/abs/2605.08558",
-        "sameAs": "https://arxiv.org/abs/2605.08558",
-        "keywords": [
-          "bandit theory",
-          "multi-fidelity learning",
-          "online learning",
-          "improving proxies"
-        ]
-      },
-      {
-        "@type": "ScholarlyArticle",
-        "name": "Design-Based Bandits under Network Interference: A Trade-off between Regret and Inference",
-        "author": [
-          {"@type":"Person","name":"Zichen Wang"},
-          {"@type":"Person","name":"Haoyang Hong"},
-          {"@type":"Person","name":"Chuanhao Li"},
-          {"@type":"Person","name":"Haoxuan Li"},
-          {"@type":"Person","name":"Zhiheng Zhang"},
-          {"@type":"Person","name":"Huazheng Wang"}
-        ],
-        "datePublished": "2025",
-        "inLanguage": "en",
-        "isPartOf": {
-          "@type": "Periodical",
-          "name": "NeurIPS 2025"
-        },
-        "identifier": "arXiv:2510.07646",
-        "url": "https://arxiv.org/abs/2510.07646",
-        "sameAs": "https://arxiv.org/abs/2510.07646",
-        "keywords": [
-          "bandit theory",
-          "network interference",
-          "regret",
-          "statistical inference"
-        ]
-      }
-    ]
-  }
-  </script>
 </head>
-
 <body>
-  <header>
-    <div class="container inner">
-      <div><strong>Haoyang Hong</strong></div>
-      <nav aria-label="Primary">
-        <a href="#about">About</a>
-        <a href="#publications">Publications</a>
-        <a href="#research">Research</a>
-        <a href="#contact">Contact</a>
-      </nav>
-    </div>
-  </header>
-
-  <main class="container">
-    <section class="hero">
-      <img class="avatar" src="/assets/me.jpg" alt="Portrait of Haoyang Hong"
-           width="120" height="120" loading="eager" fetchpriority="high" decoding="async">
-      <div>
-        <h1>Haoyang Hong</h1>
-        <div class="muted">
-          Second-year Ph.D. Student in AI, Oregon State University · Advisor:
-          <a href="https://huazhengwang.github.io/" title="Huazheng Wang — homepage">Huazheng Wang</a>
-          · Corvallis, OR
-        </div>
-        <div class="muted">
-          B.S. in Statistics, University of Science and Technology of China
-        </div>
-
-        <div class="pills" style="margin-top:10px;">
-          <span class="pill">Reinforcement Learning Theory</span>
-          <span class="pill">Bandit Theory</span>
-          <span class="pill">Online Learning</span>
-          <span class="pill">Robustness</span>
-          <span class="pill">Multi-Fidelity Learning</span>
-        </div>
-
-        <div class="links">
-          <a class="btn" href="#" id="scholar" aria-label="Open Google Scholar profile in a new tab">Google Scholar</a>
-          <a class="btn" href="#" id="github" aria-label="Open GitHub profile in a new tab">GitHub</a>
-          <a class="btn" href="#" id="linkedin" aria-label="Open LinkedIn profile in a new tab">LinkedIn</a>
-          <a class="btn" href="#" id="cv-link" aria-label="Open CV PDF in a new tab">CV (PDF)</a>
-          <span class="pill availability">Open to Summer 2026 Research Internships</span>
+  <a class="skip-link" href="#about">Skip to content</a>
+  <!-- Layout and base CSS adapted from jemdoc / jemdoc+MathJax.
+       https://github.com/jem/jemdoc
+       https://github.com/wsshin/jemdoc_mathjax -->
+  <div id="tlayout">
+    <nav id="layout-menu" aria-label="Main navigation">
+      <div class="menu-category">Menu</div>
+      <div class="menu-item"><a href="#about">Home</a></div>
+      <div class="menu-item"><a href="assets/cv_2026_11_3.pdf">CV (PDF)</a></div>
+      <div class="menu-item"><a href="#education">Education</a></div>
+      <div class="menu-category">Research</div>
+      <div class="menu-item"><a href="#research">Interests</a></div>
+      <div class="menu-item"><a href="#publications">Publications</a></div>
+      <div class="menu-item"><a href="#experience">Experience</a></div>
+      <div class="menu-category">Links</div>
+      <div class="menu-item"><a href="https://scholar.google.com/citations?hl=en&amp;user=UHEqpsEAAAAJ">Google Scholar</a></div>
+      <div class="menu-item"><a href="https://github.com/TheoryMagic">GitHub</a></div>
+      <div class="menu-item"><a href="https://www.linkedin.com/in/haoyanghong1337">LinkedIn</a></div>
+      <div class="menu-item"><a href="#contact">Contact</a></div>
+    </nav>
+    <main id="layout-content">
+      <div id="toptitle"><h1>Haoyang Hong</h1></div>
+      <div class="profile">
+        <img class="portrait" src="assets/me.jpg" alt="Portrait of Haoyang Hong" width="131" height="157" fetchpriority="high">
+        <div>
+          <p>Ph.D. Student in Artificial Intelligence<br>
+            Oregon State University<br>
+            Advisor: <a href="https://huazhengwang.github.io/">Huazheng Wang</a><br>
+            Corvallis, Oregon, USA</p>
+          <p class="profile-links">
+            <a href="mailto:honghao@oregonstate.edu">Email</a>
+            <a href="https://scholar.google.com/citations?hl=en&amp;user=UHEqpsEAAAAJ">Google Scholar</a>
+            <a href="https://github.com/TheoryMagic">GitHub</a>
+            <a href="assets/cv_2026_11_3.pdf">CV (PDF)</a>
+          </p>
         </div>
       </div>
+
+    <section id="about" aria-label="About">
+      <div class="infoblock"><div class="blockcontent"><p>I study the mathematical foundations of learning and decision-making under uncertainty.</p></div></div>
+      <p>I am a Ph.D. student at Oregon State University, advised by
+        <a href="https://huazhengwang.github.io/">Huazheng Wang</a>.
+        My research focuses on <strong>reinforcement learning theory, bandit algorithms, and statistical inference</strong>.
+        I am interested in how learning algorithms behave when models are imperfect, rewards are unreliable, or data are collected adaptively.</p>
+      <p>I received my B.S. in Statistics from the University of Science and Technology of China (USTC),
+        in the School of the Gifted Young. From July to October 2026, I was a research intern at
+        <strong>Microsoft Research Asia</strong>, working with <strong>Wei Chen</strong> on reward hacking and adaptive reward proxy refinement.</p>
+      <div class="infoblock"><div class="blockcontent"><p>I am seeking <strong>Summer 2027 research internships</strong> in reinforcement learning, learning theory, and reliable agent evaluation.
+        Please <a href="mailto:honghao@oregonstate.edu">get in touch</a> if our research interests overlap.</p></div></div>
     </section>
 
-    <section id="about" class="two-col">
-      <div class="card">
-        <h2>About</h2>
-        <p>
-          I am a second-year Ph.D. student in Artificial Intelligence in the School of Electrical Engineering and Computer Science (EECS) at Oregon State University, advised by
-          <a href="https://huazhengwang.github.io/" title="Huazheng Wang — homepage">Dr. Huazheng Wang</a>.
-          Before OSU, I received my B.S. in Statistics from the University of Science and Technology of China (USTC), School of the Gifted Young.
-        </p>
-        <p>
-          My research studies how learning systems make decisions under uncertainty, with a focus on
-          <strong>reinforcement learning theory</strong>, <strong>bandit theory</strong>, <strong>online learning</strong>,
-          robustness, and statistical inference under adaptive data collection. I am also interested in how these tools can support reliable and cost-aware AI systems, including multi-fidelity learning and adaptive feedback allocation.
-        </p>
-      </div>
-
-      <div class="card">
-        <h2>News</h2>
-        <ul class="timeline">
-          <li>
-            <time>2026</time>
-            <p>Preprint released: <em>Beyond Static Bias: Adaptive Multi-Fidelity Bandits with Improving Proxies</em>.</p>
-          </li>
-          <li>
-            <time>2026</time>
-            <p>Paper accepted to <em>RLC 2026</em>: Online KL-Regularized Reinforcement Learning with Function Approximation under Misspecification.</p>
-          </li>
-          <li>
-            <time>2026</time>
-            <p>Paper accepted to <em>ICML 2026</em>: When Can You Poison Rewards? A Tight Characterization of Reward Poisoning in Linear MDPs.</p>
-          </li>
-          <li>
-            <time>2025</time>
-            <p>Paper accepted to <em>NeurIPS 2025</em>: Design-Based Bandits under Network Interference.</p>
-          </li>
-        </ul>
-      </div>
+    <section id="research">
+      <h2>Research</h2>
+      <p>My work connects algorithm design with statistical analysis. Three questions guide my research.</p>
+      <ul class="research-questions">
+        <li><strong>How do modeling assumptions affect reinforcement learning?</strong>
+          I study KL regularization and function approximation, with a focus on what changes when the model class cannot fully represent the environment.</li>
+        <li><strong>When does optimizing a reward lead to the wrong outcome?</strong>
+          I study reward poisoning and reward hacking, including how additional feedback can help identify and refine unreliable reward proxies.</li>
+        <li><strong>How should a learner collect information?</strong>
+          I study bandit problems that balance decision quality, evaluation cost, and statistical inference, including improving proxies and network interference.</li>
+      </ul>
     </section>
 
     <section id="publications">
       <h2>Publications and Preprints</h2>
-      <div id="pubs-list" class="grid" aria-live="polite"></div>
+      <p class="section-note">* Equal contribution. See also <a href="https://scholar.google.com/citations?hl=en&amp;user=UHEqpsEAAAAJ">Google Scholar</a>.</p>
+      <article class="publication">
+        <h3>Online KL-Regularized Reinforcement Learning with Function Approximation under Misspecification</h3>
+        <p class="authors"><strong>Haoyang Hong*</strong>, Zichen Wang*, Quanquan Gu, Huazheng Wang</p>
+        <p class="venue">RLC 2026</p>
+        <p class="paper-question">How does model misspecification affect online reinforcement learning with KL regularization and function approximation?</p>
+        
+        <details>
+          <summary>BibTeX</summary>
+          <pre><code>@inproceedings{hong2026onlinekl,
+  title={Online KL-Regularized Reinforcement Learning with Function Approximation under Misspecification},
+  author={Hong, Haoyang and Wang, Zichen and Gu, Quanquan and Wang, Huazheng},
+  booktitle={Reinforcement Learning Conference},
+  year={2026}
+}</code></pre>
+          <button class="copy-citation" type="button" hidden>Copy citation</button>
+        </details>
+      </article>
 
-      <script id="pubs-data" type="application/json">[
-        {
-          "title": "Online KL-Regularized Reinforcement Learning with Function Approximation under Misspecification",
-          "venue": "RLC 2026",
-          "date": "2026",
-          "authors_html": "<strong>Haoyang Hong*</strong>, Zichen Wang*, Quanquan Gu, Huazheng Wang <span class=\"muted\">(*equal contribution)</span>",
-          "links": [],
-          "bibtex": "@inproceedings{hong2026onlinekl,\n  title={Online KL-Regularized Reinforcement Learning with Function Approximation under Misspecification},\n  author={Hong, Haoyang and Wang, Zichen and Gu, Quanquan and Wang, Huazheng},\n  booktitle={Reinforcement Learning Conference},\n  year={2026}\n}"
-        },
-        {
-          "title": "When Can You Poison Rewards? A Tight Characterization of Reward Poisoning in Linear MDPs",
-          "venue": "ICML 2026",
-          "date": "2026",
-          "authors_html": "Jose Efraim Aguilar Escamilla*, <strong>Haoyang Hong*</strong>, Jiawei Li*, Haoyu Zhao, Xuezhou Zhang, Sanghyun Hong, Huazheng Wang <span class=\"muted\">(*equal contribution)</span>",
-          "links": [],
-          "bibtex": "@inproceedings{aguilarescamilla2026poison,\n  title={When Can You Poison Rewards? A Tight Characterization of Reward Poisoning in Linear MDPs},\n  author={Aguilar Escamilla, Jose Efraim and Hong, Haoyang and Li, Jiawei and Zhao, Haoyu and Zhang, Xuezhou and Hong, Sanghyun and Wang, Huazheng},\n  booktitle={International Conference on Machine Learning},\n  year={2026}\n}"
-        },
-        {
-          "title": "Beyond Static Bias: Adaptive Multi-Fidelity Bandits with Improving Proxies",
-          "venue": "arXiv preprint",
-          "date": "2026",
-          "authors_html": "Muyun Lu*, <strong>Haoyang Hong*</strong>, Huazheng Wang, Ying Lin <span class=\"muted\">(*equal contribution)</span>",
-          "links": [
-            {"label":"PDF","href":"https://arxiv.org/pdf/2605.08558.pdf"},
-            {"label":"arXiv","href":"https://arxiv.org/abs/2605.08558"}
-          ],
-          "bibtex": "@article{lu2026beyond,\n  title={Beyond Static Bias: Adaptive Multi-Fidelity Bandits with Improving Proxies},\n  author={Lu, Muyun and Hong, Haoyang and Wang, Huazheng and Lin, Ying},\n  journal={arXiv preprint arXiv:2605.08558},\n  year={2026}\n}"
-        },
-        {
-          "title": "Design-Based Bandits under Network Interference: A Trade-off between Regret and Inference",
-          "venue": "NeurIPS 2025",
-          "date": "2025",
-          "authors_html": "Zichen Wang*, <strong>Haoyang Hong*</strong>, Chuanhao Li, Haoxuan Li, Zhiheng Zhang, Huazheng Wang <span class=\"muted\">(*equal contribution)</span>",
-          "links": [
-            {"label":"PDF","href":"https://arxiv.org/pdf/2510.07646.pdf"},
-            {"label":"arXiv","href":"https://arxiv.org/abs/2510.07646"}
-          ],
-          "bibtex": "@inproceedings{wang2025design,\n  title={Design-Based Bandits under Network Interference: A Trade-off between Regret and Inference},\n  author={Wang, Zichen and Hong, Haoyang and Li, Chuanhao and Li, Haoxuan and Zhang, Zhiheng and Wang, Huazheng},\n  booktitle={Advances in Neural Information Processing Systems},\n  year={2025},\n  url={https://arxiv.org/abs/2510.07646}\n}"
-        }
-      ]</script>
+      <article class="publication">
+        <h3>When Can You Poison Rewards? A Tight Characterization of Reward Poisoning in Linear MDPs</h3>
+        <p class="authors">Jose Efraim Aguilar Escamilla*, <strong>Haoyang Hong*</strong>, Jiawei Li*, Haoyu Zhao, Xuezhou Zhang, Sanghyun Hong, Huazheng Wang</p>
+        <p class="venue">ICML 2026</p>
+        <p class="paper-question">When can an adversary change rewards to induce a target policy in a linear Markov decision process?</p>
+        
+        <details>
+          <summary>BibTeX</summary>
+          <pre><code>@inproceedings{aguilarescamilla2026poison,
+  title={When Can You Poison Rewards? A Tight Characterization of Reward Poisoning in Linear MDPs},
+  author={Aguilar Escamilla, Jose Efraim and Hong, Haoyang and Li, Jiawei and Zhao, Haoyu and Zhang, Xuezhou and Hong, Sanghyun and Wang, Huazheng},
+  booktitle={International Conference on Machine Learning},
+  year={2026}
+}</code></pre>
+          <button class="copy-citation" type="button" hidden>Copy citation</button>
+        </details>
+      </article>
 
-      <noscript><p class="muted">Enable JavaScript to view publications.</p></noscript>
+      <article class="publication">
+        <h3>Beyond Static Bias: Adaptive Multi-Fidelity Bandits with Improving Proxies</h3>
+        <p class="authors">Muyun Lu*, <strong>Haoyang Hong*</strong>, Huazheng Wang, Ying Lin</p>
+        <p class="venue">arXiv:2605.08558 · 2026</p>
+        <p class="paper-question">How should a learner allocate evaluations across fidelity levels when cheaper proxy feedback improves with repeated use?</p>
+        <p class="paper-links"><a href="https://arxiv.org/pdf/2605.08558.pdf">PDF</a> &middot; <a href="https://arxiv.org/abs/2605.08558">arXiv</a></p>
+        <details>
+          <summary>BibTeX</summary>
+          <pre><code>@article{lu2026beyond,
+  title={Beyond Static Bias: Adaptive Multi-Fidelity Bandits with Improving Proxies},
+  author={Lu, Muyun and Hong, Haoyang and Wang, Huazheng and Lin, Ying},
+  journal={arXiv preprint arXiv:2605.08558},
+  year={2026}
+}</code></pre>
+          <button class="copy-citation" type="button" hidden>Copy citation</button>
+        </details>
+      </article>
+
+      <article class="publication">
+        <h3>Design-Based Bandits under Network Interference: A Trade-off between Regret and Inference</h3>
+        <p class="authors">Zichen Wang*, <strong>Haoyang Hong*</strong>, Chuanhao Li, Haoxuan Li, Zhiheng Zhang, Huazheng Wang</p>
+        <p class="venue">NeurIPS 2025</p>
+        <p class="paper-question">How can adaptive experiments balance regret minimization and valid statistical inference when one individual’s treatment affects others’ outcomes?</p>
+        <p class="paper-links"><a href="https://arxiv.org/pdf/2510.07646.pdf">PDF</a> &middot; <a href="https://arxiv.org/abs/2510.07646">arXiv</a></p>
+        <details>
+          <summary>BibTeX</summary>
+          <pre><code>@inproceedings{wang2025design,
+  title={Design-Based Bandits under Network Interference: A Trade-off between Regret and Inference},
+  author={Wang, Zichen and Hong, Haoyang and Li, Chuanhao and Li, Haoxuan and Zhang, Zhiheng and Wang, Huazheng},
+  booktitle={Advances in Neural Information Processing Systems},
+  year={2025},
+  url={https://arxiv.org/abs/2510.07646}
+}</code></pre>
+          <button class="copy-citation" type="button" hidden>Copy citation</button>
+        </details>
+      </article>
     </section>
 
-    <!-- <section id="research">
-      <h2>Research</h2>
-      <div class="grid">
-        <div class="card">
-          <h3>Regularized and Robust Reinforcement Learning</h3>
-          <p>
-            I study how regularization, reference policies, and model misspecification reshape regret guarantees and policy benchmarks in online reinforcement learning. I also analyze instance-level vulnerability and robustness of reinforcement learning systems under structured reward perturbations.
-          </p>
-        </div>
-
-        <div class="card">
-          <h3>Bandit Learning under Adaptive Data Collection</h3>
-          <p>
-            I work on online learning algorithms that balance regret minimization with valid statistical inference when data are collected adaptively, including bandit models with network interference, preference feedback, and forced exploration.
-          </p>
-        </div>
-
-        <div class="card">
-          <h3>Multi-Fidelity and Cost-Aware Online Learning</h3>
-          <p>
-            I am interested in adaptive multi-fidelity bandits with improving proxy feedback, where low-cost signals become more informative through repeated use. This direction is also connected to reliable evaluation, adaptive feedback allocation, and cost-aware AI systems.
-          </p>
-        </div>
+    <section id="experience">
+      <h2>Research Experience</h2>
+      <div class="entry-heading">
+        <h3>Microsoft Research Asia (MSRA)</h3>
+        <span class="entry-meta">July–October 2026</span>
       </div>
-    </section> -->
+      <p class="entry-meta">Research Intern · Mentor: Wei Chen</p>
+      <p>My internship explored a practical question in reward hacking.
+        <strong>How can occasional, costly feedback improve a cheap reward proxy, and when should the system request further evaluation?</strong></p>
+      <ul class="experience-points">
+        <li>Investigated extensions of existing reward hacking theory to understand how optimizing a proxy reward affects the true reward and how additional feedback can guide proxy refinement.</li>
+        <li>Studied adaptive methods for refining reward proxies using feedback from more capable LLMs, human supervision, or comprehensive environment evaluations.
+          The aim was to reduce reliance on costly feedback as training progresses, while flagging potential proxy failures for further evaluation.</li>
+        <li>Conducted preliminary experiments with coding agents and robotics tasks to examine proxy refinement, discrepancies between proxy and true rewards, and evaluation cost.</li>
+      </ul>
+    </section>
+
+    <section id="education">
+      <h2>Education</h2>
+      <div class="education-entry">
+        <div class="entry-heading">
+          <h3>Oregon State University</h3>
+          <span class="entry-meta">September 2024–present</span>
+        </div>
+        <p>Ph.D. in Artificial Intelligence · Expected September 2029</p>
+        <p>Advisor: <a href="https://huazhengwang.github.io/">Huazheng Wang</a></p>
+      </div>
+      <div class="education-entry">
+        <div class="entry-heading">
+          <h3>University of Science and Technology of China</h3>
+          <span class="entry-meta">September 2020–July 2024</span>
+        </div>
+        <p><strong>B.S. in Statistics</strong> · School of the Gifted Young</p>
+      </div>
+    </section>
 
     <section id="contact">
       <h2>Contact</h2>
-      <div class="card">
-        <p>
-          Email:
-          <a href="mailto:honghao@oregonstate.edu" id="email-link">honghao@oregonstate.edu</a>
-          · Office: Corvallis, OR · Open to collaboration.
-        </p>
-        <p class="muted">Happy to chat!</p>
-        <button class="btn" id="copy-email" type="button">Copy email</button>
-      </div>
+      <p>I welcome conversations about reinforcement learning theory, bandits, and reward robustness.</p>
+      <p><a href="mailto:honghao@oregonstate.edu">honghao@oregonstate.edu</a><br>
+        Oregon State University · Corvallis, Oregon, USA</p>
     </section>
-
-    <footer>
-      <div class="container">
-        <div>© <span id="year"></span> Haoyang Hong · Built with vanilla HTML/CSS. No cookies.</div>
+      <div id="footer">Last updated November 3, 2026 · Template adapted from
+        <a href="https://github.com/wsshin/jemdoc_mathjax">jemdoc+MathJax</a>.
       </div>
-    </footer>
-
-    <div id="live-region" class="sr-only" aria-live="polite"></div>
-  </main>
-
+    </main>
+  </div>
+  <p id="copy-status" class="sr-only" role="status"></p>
   <script>
-    document.getElementById('year').textContent = new Date().getFullYear();
-
-    const LINKS = {
-      scholar: 'https://scholar.google.com/citations?hl=en&user=UHEqpsEAAAAJ',
-      github: 'https://github.com/TheoryMagic',
-      linkedin: 'https://www.linkedin.com/in/haoyanghong1337',
-      cv: '/assets/cv_Haoyang_Hong.pdf',
-      advisor: 'https://huazhengwang.github.io/',
-      email: 'honghao@oregonstate.edu'
-    };
-
-    const scholarEl = document.getElementById('scholar');
-    const githubEl = document.getElementById('github');
-    const linkedinEl = document.getElementById('linkedin');
-    const cvEl = document.getElementById('cv-link');
-
-    if (scholarEl) scholarEl.href = LINKS.scholar;
-    if (githubEl) githubEl.href = LINKS.github;
-    if (linkedinEl) linkedinEl.href = LINKS.linkedin;
-    if (cvEl) cvEl.href = LINKS.cv;
-
-    const adv = document.querySelector('.hero a');
-    if (adv && LINKS.advisor) adv.href = LINKS.advisor;
-
-    const emailA = document.getElementById('email-link');
-    if (emailA && LINKS.email) {
-      emailA.textContent = LINKS.email;
-      emailA.href = `mailto:${LINKS.email}`;
-    }
-
-    ['scholar', 'github', 'linkedin', 'cv-link'].forEach(id => {
-      const el = document.getElementById(id);
-      if (el) {
-        el.target = '_blank';
-        el.rel = 'noopener';
-      }
-    });
-
-    (function () {
-      const dataEl = document.getElementById('pubs-data');
-      const listEl = document.getElementById('pubs-list');
-      if (!dataEl || !listEl) return;
-
-      try {
-        const pubs = JSON.parse(dataEl.textContent.trim());
-
-        pubs.forEach((p) => {
-          const art = document.createElement('article');
-          art.className = 'pub-item reveal';
-
-          const h3 = document.createElement('h3');
-          h3.innerHTML = p.title;
-
-          const meta = document.createElement('div');
-          meta.className = 'muted';
-          const dateText = p.date ? ` · ${p.date}` : '';
-          meta.innerHTML = `<em>${p.venue}</em>${dateText}. ${p.authors_html}`;
-
-          const actions = document.createElement('div');
-          actions.className = 'pub-actions';
-          actions.style.marginTop = '6px';
-
-          (p.links || []).forEach(L => {
-            if (!L.href) return;
-            const a = document.createElement('a');
-            a.href = L.href;
-            a.textContent = L.label;
-            a.title = L.label;
-            a.target = '_blank';
-            a.rel = 'noopener';
-            actions.appendChild(a);
-          });
-
-          art.append(h3, meta, actions);
-
-          if (p.bibtex) {
-            const det = document.createElement('details');
-
-            const sum = document.createElement('summary');
-            sum.innerHTML = 'BibTeX';
-
-            const copy = document.createElement('button');
-            copy.type = 'button';
-            copy.className = 'copy-btn';
-            copy.textContent = 'Copy';
-            copy.setAttribute('aria-label', 'Copy BibTeX to clipboard');
-
-            sum.appendChild(copy);
-
-            const pre = document.createElement('pre');
-            const code = document.createElement('code');
-            code.textContent = p.bibtex;
-            pre.appendChild(code);
-
-            det.append(sum, pre);
-            art.appendChild(det);
-
-            copy.addEventListener('click', (e) => {
-              e.stopPropagation();
-              navigator.clipboard.writeText(p.bibtex).then(() => {
-                announce('BibTeX copied');
-                copy.textContent = 'Copied';
-                setTimeout(() => copy.textContent = 'Copy', 900);
-              });
-            });
+    // Citations remain readable and selectable without JavaScript.
+    if (navigator.clipboard && window.isSecureContext) {
+      document.querySelectorAll('.copy-citation').forEach((button) => {
+        button.hidden = false;
+        button.addEventListener('click', async () => {
+          const citation = button.closest('details').querySelector('code').textContent;
+          const status = document.getElementById('copy-status');
+          try {
+            await navigator.clipboard.writeText(citation);
+            button.textContent = 'Copied';
+            status.textContent = 'Citation copied.';
+            setTimeout(() => { button.textContent = 'Copy citation'; }, 1800);
+          } catch {
+            status.textContent = 'Please select and copy the citation text above.';
+            button.textContent = 'Select citation text to copy';
           }
-
-          listEl.appendChild(art);
-        });
-      } catch (e) {
-        console.error('Failed to parse publication data:', e);
-      }
-    })();
-
-    (function () {
-      const reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-      const els = document.querySelectorAll('.card, .pub-item, .hero');
-
-      els.forEach(el => el.classList.add('reveal'));
-
-      if (reduce) {
-        els.forEach(el => el.classList.add('in'));
-        return;
-      }
-
-      const io = new IntersectionObserver((entries) => {
-        for (const en of entries) {
-          if (en.isIntersecting) {
-            en.target.classList.add('in');
-            io.unobserve(en.target);
-          }
-        }
-      }, {
-        rootMargin: '0px 0px -10% 0px',
-        threshold: 0.1
-      });
-
-      els.forEach(el => io.observe(el));
-    })();
-
-    function announce(msg) {
-      const live = document.getElementById('live-region');
-      if (live) {
-        live.textContent = '';
-        setTimeout(() => live.textContent = msg, 10);
-      }
-    }
-
-    (function () {
-      const btn = document.getElementById('copy-email');
-      const a = document.getElementById('email-link');
-      if (!btn || !a) return;
-
-      btn.addEventListener('click', () => {
-        const email = a.textContent.trim();
-        navigator.clipboard.writeText(email).then(() => {
-          announce('Email copied');
-          const prev = btn.textContent;
-          btn.textContent = 'Copied';
-          setTimeout(() => btn.textContent = prev, 900);
         });
       });
-    })();
+    }
   </script>
 </body>
 </html>
